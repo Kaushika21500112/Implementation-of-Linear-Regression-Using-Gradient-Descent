@@ -8,8 +8,8 @@ To write a program to implement the linear regression using gradient descent.
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-1. Use the standard libraries in python for Gradient Design.
-2. Reat the dataset file and check any null value using .isnull() method.
+1. Import the standard libraries in python required for finding Gradient Design.
+2. Read the dataset file and check any null value using .isnull() method.
 3. Declare the default variables with respective values for linear regression.
 4. Calculate the loss usinng Mean Square Error.
 5. Predict the value of y.
