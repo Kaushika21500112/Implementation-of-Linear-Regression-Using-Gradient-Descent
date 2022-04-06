@@ -8,13 +8,13 @@ To write a program to implement the linear regression using gradient descent.
 2. Anaconda – Python 3.7 Installation / Moodle-Code Runner
 
 ## Algorithm
-1. Import the standard libraries in python for finding linear regression.
-2. Assign a variable 'dataset' for reading the content in given csv file.
-3. Split the supervised data and unsupervised data in the dataset using train_test_split method.
-4. Using training and test values on dataset, predict the linear line .
-5. Assign the points for representing in the graph
-6. Predict the regression for marks by using the representation of the graph.
-7. Compare the graphs and hence we obtained the linear regression for the given datas.
+1. Use the standard libraries in python for Gradient Design.
+2. Reat the dataset file and check any null value using .isnull() method.
+3. Declare the default variables with respective values for linear regression.
+4. Calculate the loss usinng Mean Square Error.
+5. Predict the value of y.
+6. Plot the graph respect to hours and scores using scatter plot method for Linear Regression.
+7. Plot the graph respect to loss and iterations using plot method for Gradient Descent.
 ## Program:
 ```
 /*
@@ -30,35 +30,60 @@ df=pd.read_csv('student_scores - student_scores.csv')
 df.head()
 df.tail()
 
-x=df.iloc[:,:-1].values
-y=df.iloc[:,1].values
-from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 1/3,random_state=0)
-regressor = LinearRegression()
-regressor.fit(x_train,y_train)
-y_pred=regressor.predict(x_test)
+#checking for null values in dataset
+df.isnull().sum()
 
-#for training data
-plt.scatter(x_train,y_train,color = "blue")
-plt.plot(x_train,regressor.predict(x_train),color= "purple")
-plt.title("hours Vs scores(train)")
-plt.xlabel("hours")
-plt.ylabel("scores")
+#To calculate Gradient decent and Linear Descent
+x=df.Hours
+x.head()
+
+y=df.Scores
+y.head()
+
+n=len(x)
+m=0
+c=0
+L=0.001
+loss=[]
+for i in range(10000):
+    ypred = m*x + c
+    MSE = (1/n) * sum((ypred - y)*2)
+    dm = (2/n) * sum(x*(ypred-y))
+    dc = (2/n) * sum(ypred-y)
+    c = c-L*dc
+    m = m-L*dm
+    loss.append(MSE)
+print(m,c)
+
+#plotting Linear Regression graph
+y_pred=m*x+c
+plt.scatter(x,y,color="violet")
+plt.plot(x,y_pred,color="purple")
+plt.xlabel("Study Hours")
+plt.ylabel("Scores")
+plt.title("Study hours vs Scores")
 plt.show()
 
-#for test data
-plt.scatter(x_test,y_test,color = "red")
-plt.plot(x_test,regressor.predict(x_test),color= "black")
-plt.title("hours Vs scores(test)")
-plt.xlabel("hours")
-plt.ylabel("scores")
+#plotting Gradient Descent graph
+plt.plot(loss, color="skyblue")
+plt.xlabel("Iterations")
+plt.ylabel("Loss")
 plt.show()
 ```
 
 ## Output:
+## Contents in the data file (head, tail):
 ![](o1.png)
 ![](o2.png)
-![](o3.png)
+## Checking for null values in the dataset:
+![](o3a.png)
+# X and Y datasets from original dataset:
+![](o4.png)
+![](o5.png)
+## Linear Regression Graph:
+![](o6.png)
+## Gradient Descent Graph:
+![](o7.png)
 
 
 ## Result:
