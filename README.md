@@ -77,7 +77,7 @@ plt.show()
 ![](o2.png)
 ## Checking for null values in the dataset:
 ![](o3a.png)
-# X and Y datasets from original dataset:
+## X and Y datasets from original dataset:
 ![](o4.png)
 ![](o5.png)
 ## Linear Regression Graph:
